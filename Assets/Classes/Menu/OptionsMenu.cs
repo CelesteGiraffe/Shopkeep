@@ -21,8 +21,8 @@ public class OptionsMenu : MonoBehaviour {
         Debug.Log("Fullscreen: " + isFullscreen);
     }
 
-    public void OnExitPress() {
-        SceneManager.LoadScene("MainMenu");
+    public void OnExitPress(int sceneID) {
+        SceneManager.LoadScene(sceneID);
         Debug.Log("Back to Main Menu");
     }
 }

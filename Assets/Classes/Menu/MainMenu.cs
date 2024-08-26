@@ -3,19 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour {
 
-    public void NewGame() {
-        SceneManager.LoadScene("Shop");
+    public void NewGame(int sceneID) {
+        SceneManager.LoadScene(sceneID);
     }
 
-    public void LoadGame() {
-        SceneManager.LoadScene("Shop");
+    public void LoadGame(int sceneID) {
+        SceneManager.LoadScene(sceneID);
     }
 
     public void QuitGame() { 
         Application.Quit();
     }
 
-    public void GoToOptions() {
-        SceneManager.LoadScene("Options");
+    public void GoToOptions(int sceneID) {
+        SceneManager.LoadScene(sceneID);
     }
 }
