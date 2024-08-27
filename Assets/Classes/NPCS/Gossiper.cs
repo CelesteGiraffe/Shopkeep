@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,7 @@ public class Gossiper : Customer
     public override void Interact()
     {
         base.Interact();
-        dialogue.StartDialogue(new string[] { "Like omg you'd never guess what I learned about you from henifer!", "She said you were not going to pilates anymore!" });
-
+        dialogue.StartDialogue(new string[] { "I heard that there is a big ghost being all ghosty and stuff at the edge of town!" });
+        
     }
 }

@@ -7,7 +7,7 @@ public class Furniture : MonoBehaviour, IInteractable
     private ItemData itemOnFurniture = null;
     public Dialogue dialogue;
     private OpenInv openInv;
-    public Transform itemLoc; 
+    public Transform itemLoc;
     private SpriteRenderer itemSpriteRenderer;
 
     private void Start()
@@ -15,6 +15,13 @@ public class Furniture : MonoBehaviour, IInteractable
         dialogue = GameObject.FindGameObjectWithTag("Player").GetComponent<Dialogue>();
         openInv = GameObject.FindGameObjectWithTag("Player").GetComponent<OpenInv>();
         itemSpriteRenderer = itemLoc.GetComponent<SpriteRenderer>();
+
+        // Register this furniture with the FurnitureManager
+        FurnitureManager furnitureManager = FindObjectOfType<FurnitureManager>();
+        if (furnitureManager != null)
+        {
+            furnitureManager.RegisterFurniture(this);
+        }
     }
 
     public void Interact()
@@ -42,8 +49,8 @@ public class Furniture : MonoBehaviour, IInteractable
         {
             itemOnFurniture = item;
             Debug.Log(item.itemName + " placed on " + furnitureName);
-            itemSpriteRenderer.sprite = item.itemIcon; 
-            itemSpriteRenderer.enabled = true; 
+            itemSpriteRenderer.sprite = item.itemIcon;
+            itemSpriteRenderer.enabled = true;
         }
         else
         {
@@ -56,14 +63,19 @@ public class Furniture : MonoBehaviour, IInteractable
         if (!IsEmpty())
         {
             Debug.Log(itemOnFurniture.itemName + " removed from " + furnitureName);
-            ItemData itemInstance = Instantiate(itemOnFurniture); 
-            openInv.AddItem(itemInstance); 
+            ItemData itemInstance = Instantiate(itemOnFurniture);
+            openInv.AddItem(itemInstance);
             itemOnFurniture = null;
-            itemSpriteRenderer.enabled = false; 
+            itemSpriteRenderer.enabled = false;
         }
         else
         {
             dialogue.StartDialogue(new string[] { "No item to remove from " + furnitureName });
         }
+    }
+
+    public ItemData GetItem()
+    {
+        return itemOnFurniture;
     }
 }
