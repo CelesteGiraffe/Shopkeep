@@ -112,7 +112,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 StopCoroutine(moveCoroutine);
                 isMoving = false;
-                rb.position = previousPosition;
+                //rb.position = previousPosition;
+                //rb.position = previousPosition;
                 targetPosition = previousPosition; 
                 StartCoroutine(CooldownCoroutine()); 
             }
