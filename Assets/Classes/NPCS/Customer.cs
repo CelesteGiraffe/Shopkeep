@@ -68,7 +68,7 @@ public class Customer : MonoBehaviour
 
     private bool IsCharacterInFront(Vector2 targetPosition)
     {
-        Collider2D hit = Physics2D.OverlapCircle(targetPosition, 0.5f, ObsLayer);
+        Collider2D hit = Physics2D.OverlapCircle(targetPosition, 0.5f);
         Debug.Log(hit);
         return hit != null;
     }
