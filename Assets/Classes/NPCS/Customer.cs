@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
-    public List<GameObject> path; 
+    public List<GameObject> path;
     public float moveSpeed = 2f;
-    public LayerMask characterLayer;
     private int currentWaypointIndex = 0;
+    public LayerMask ObsLayer;
     private bool isMoving = false;
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    protected virtual void Start() 
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         if (path.Count > 0)
@@ -25,7 +24,7 @@ public class Customer : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        
+
     }
 
     public virtual void Interact()
@@ -44,7 +43,12 @@ public class Customer : MonoBehaviour
                 {
                     isMoving = true;
                     yield return StartCoroutine(MoveToPosition(targetPosition));
-                    currentWaypointIndex = (currentWaypointIndex + 1) % path.Count;
+                    currentWaypointIndex++;
+                    if (currentWaypointIndex >= path.Count)
+                    {
+                        Debug.Log("Reached the last waypoint.");
+                        yield break; 
+                    }
                 }
             }
             yield return null;
@@ -53,17 +57,19 @@ public class Customer : MonoBehaviour
 
     private IEnumerator MoveToPosition(Vector2 targetPosition)
     {
-        while ((Vector2)rb.position != targetPosition)
+        while (Vector2.Distance(rb.position, targetPosition) > 0.1f)
         {
             rb.position = Vector2.MoveTowards(rb.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
+        rb.position = targetPosition;
         isMoving = false;
     }
 
     private bool IsCharacterInFront(Vector2 targetPosition)
     {
-        Collider2D hit = Physics2D.OverlapCircle(targetPosition, 0.5f);
+        Collider2D hit = Physics2D.OverlapCircle(targetPosition, 0.5f, ObsLayer);
+        Debug.Log(hit);
         return hit != null;
     }
 }
