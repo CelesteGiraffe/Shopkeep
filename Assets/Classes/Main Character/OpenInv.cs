@@ -125,15 +125,32 @@ public class OpenInv : MonoBehaviour
     {
         Vector3 spawnPosition = pm.GetPositionInFront();
         spawnPosition.z = 0;
-        if (!Physics2D.OverlapCircle(spawnPosition, checkRadius))
+        Collider2D hit = Physics2D.OverlapCircle(spawnPosition, checkRadius);
+
+        if (hit != null)
         {
-            Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
-            itemInventory.Remove(item);
-            DisplayInventory();
+            Furniture furniture = hit.GetComponent<Furniture>();
+            if (furniture != null)
+            {
+                if (furniture.IsEmpty())
+                {
+                    furniture.PlaceItem(item);
+                    itemInventory.Remove(item);
+                    DisplayInventory();
+                }
+                else
+                {
+                    Debug.Log("Furniture already has an item.");
+                }
+            }
+            else
+            {
+                Debug.Log("No furniture to place the item on.");
+            }
         }
         else
         {
-            Debug.Log("Cannot spawn item, area is occupied.");
+            Debug.Log("Cannot place item, no furniture found.");
         }
     }
 

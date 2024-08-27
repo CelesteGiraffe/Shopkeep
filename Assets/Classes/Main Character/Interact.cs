@@ -15,21 +15,21 @@ public class Interact : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            InteractWithCustomer();
+            InteractWithObject();
         }
     }
 
-    private void InteractWithCustomer()
+    private void InteractWithObject()
     {
         Vector2 positionInFront = playerMovement.GetPositionInFront();
         Collider2D hit = Physics2D.OverlapCircle(positionInFront, 0.5f);
         Debug.Log(hit);
         if (hit != null)
         {
-            Customer customer = hit.GetComponent<Customer>();
-            if (customer != null)
+            IInteractable interactable = hit.GetComponent<IInteractable>();
+            if (interactable != null)
             {
-                customer.Interact();
+                interactable.Interact();
             }
         }
     }

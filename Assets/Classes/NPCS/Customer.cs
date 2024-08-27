@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Customer : MonoBehaviour
+public class Customer : MonoBehaviour, IInteractable
 {
     public List<GameObject> path;
     public float moveSpeed = 2f;
