@@ -9,16 +9,14 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
     private bool isDialogueOpen = false;
-    private System.Action onDialogueEnd; // New field to store the callback
+    private System.Action onDialogueEnd; 
 
-    // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
         dialogue.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (isDialogueOpen && Input.GetKeyDown(KeyCode.Space))
@@ -37,7 +35,7 @@ public class Dialogue : MonoBehaviour
     {
         dialogue.SetActive(false);
         isDialogueOpen = false;
-        onDialogueEnd?.Invoke(); // Invoke the callback if it's set
+        onDialogueEnd?.Invoke(); 
     }
 
     public void StartDialogue(string[] dialogueSentences)
@@ -53,11 +51,10 @@ public class Dialogue : MonoBehaviour
         DisplayNextSentence();
     }
 
-    // Overloaded StartDialogue method that accepts a callback
     public void StartDialogue(string[] dialogueSentences, System.Action onEnd)
     {
-        onDialogueEnd = onEnd; // Store the callback
-        StartDialogue(dialogueSentences); // Call the original method
+        onDialogueEnd = onEnd; 
+        StartDialogue(dialogueSentences); 
     }
 
     public void DisplayNextSentence()

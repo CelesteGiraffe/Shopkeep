@@ -13,7 +13,6 @@ public class Gossiper : Customer
     // Update is called once per frame
     void Update()
     {
-        base.Update();
     }
 
     public override void Interact()
