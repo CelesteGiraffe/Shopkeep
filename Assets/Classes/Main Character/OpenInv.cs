@@ -21,7 +21,7 @@ public class OpenInv : MonoBehaviour
 
     private bool showingFurniture = true;
 
-    private float checkRadius = 1.0f;
+    private float checkRadius = .5f;
 
     void Start()
     {
@@ -124,7 +124,7 @@ public class OpenInv : MonoBehaviour
     void SpawnItem(ItemData item)
     {
         Vector3 spawnPosition = pm.GetPositionInFront();
-        spawnPosition.z = player.transform.position.z;
+        spawnPosition.z = 0;
         if (!Physics2D.OverlapCircle(spawnPosition, checkRadius))
         {
             Instantiate(item.itemPrefab, spawnPosition, Quaternion.identity);
