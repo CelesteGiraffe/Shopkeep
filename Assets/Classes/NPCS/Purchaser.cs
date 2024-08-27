@@ -18,7 +18,6 @@ public class Purchaser : Customer
 
     public override void Interact()
     {
-        base.Interact();
-        Debug.Log("Purchaser: I want to buy something from your shop.");
+        dialogue.StartDialogue(new string[] { "Got any grapes?", "Goodbye!" });
     }
 }

@@ -19,7 +19,7 @@ public class Gossiper : Customer
     public override void Interact()
     {
         base.Interact();
-        Debug.Log("Gossiper: I have some information for you.");
-        
+        dialogue.StartDialogue(new string[] { "Like omg you'd never guess what I learned about you from henifer!", "She said you were not going to pilates anymore!" });
+
     }
 }

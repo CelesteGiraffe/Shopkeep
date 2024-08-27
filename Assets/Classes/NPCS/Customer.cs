@@ -9,7 +9,10 @@ public class Customer : MonoBehaviour
     private int currentWaypointIndex = 0;
     public LayerMask ObsLayer;
     private bool isMoving = false;
+    private bool isInteracting = false; 
     private Rigidbody2D rb;
+    public Dialogue dialogue;
+    private Vector2 currentTargetPosition; 
 
     protected virtual void Start()
     {
@@ -21,33 +24,33 @@ public class Customer : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    protected virtual void Update()
-    {
-
-    }
-
     public virtual void Interact()
     {
-        Debug.Log("Interacting with a customer.");
+        isInteracting = true; 
+        dialogue.StartDialogue(new string[] { "Interacting with a customer.", "Goodbye!" }, EndInteraction);
+    }
+
+    private void EndInteraction()
+    {
+        isInteracting = false; 
     }
 
     public IEnumerator FollowPath()
     {
         while (true)
         {
-            if (!isMoving && path.Count > 0)
+            if (!isMoving && !isInteracting && path.Count > 0)
             {
-                Vector2 targetPosition = path[currentWaypointIndex].transform.position;
-                if (!IsCharacterInFront(targetPosition))
+                currentTargetPosition = path[currentWaypointIndex].transform.position;
+                if (!IsCharacterInFront(currentTargetPosition))
                 {
                     isMoving = true;
-                    yield return StartCoroutine(MoveToPosition(targetPosition));
+                    yield return StartCoroutine(MoveToPosition(currentTargetPosition));
                     currentWaypointIndex++;
                     if (currentWaypointIndex >= path.Count)
                     {
                         Debug.Log("Reached the last waypoint.");
-                        yield break; 
+                        yield break;
                     }
                 }
             }
@@ -59,6 +62,11 @@ public class Customer : MonoBehaviour
     {
         while (Vector2.Distance(rb.position, targetPosition) > 0.1f)
         {
+            if (isInteracting)
+            {
+                isMoving = false;
+                yield break;
+            }
             rb.position = Vector2.MoveTowards(rb.position, targetPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -69,7 +77,6 @@ public class Customer : MonoBehaviour
     private bool IsCharacterInFront(Vector2 targetPosition)
     {
         Collider2D hit = Physics2D.OverlapCircle(targetPosition, 0.5f);
-        Debug.Log(hit);
         return hit != null;
     }
 }
