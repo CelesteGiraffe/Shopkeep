@@ -40,18 +40,20 @@ public class PlayerMovement : MonoBehaviour
 
             if (moveInput != Vector2.zero)
             {
-                Vector2 potentialTarget = rb.position + moveInput * gridSize;
-                if (!IsObstacle(potentialTarget))
+                // Update facing direction immediately
+                animator.SetFloat("IdleX", moveInput.x);
+                animator.SetFloat("IdleY", moveInput.y);
+                lastMoveDirection = moveInput;
+
+                // Check if the input is held long enough to move
+                if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
-                    previousPosition = rb.position;
-                    targetPosition = potentialTarget;
-                    moveCoroutine = StartCoroutine(MoveToGridPosition(targetPosition));
-                    lastMoveDirection = moveInput; 
+                    StartCoroutine(InitiateMovementAfterDelay());
                 }
             }
             else
             {
-               
+                // Set idle animation based on last move direction
                 animator.SetFloat("IdleX", lastMoveDirection.x);
                 animator.SetFloat("IdleY", lastMoveDirection.y);
             }
@@ -65,6 +67,22 @@ public class PlayerMovement : MonoBehaviour
             Vector3 desiredPosition = new Vector3(rb.position.x, rb.position.y, mainCamera.transform.position.z);
             Vector3 smoothedPosition = Vector3.Lerp(mainCamera.transform.position, desiredPosition, cameraSmoothSpeed);
             mainCamera.transform.position = smoothedPosition;
+        }
+    }
+
+    private IEnumerator InitiateMovementAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f); // Adjust the delay as needed
+
+        if (moveInput != Vector2.zero && !isMoving && !isCooldown)
+        {
+            Vector2 potentialTarget = rb.position + moveInput * gridSize;
+            if (!IsObstacle(potentialTarget))
+            {
+                previousPosition = rb.position;
+                targetPosition = potentialTarget;
+                moveCoroutine = StartCoroutine(MoveToGridPosition(targetPosition));
+            }
         }
     }
 
