@@ -22,4 +22,8 @@ public class MenuScript : MonoBehaviour {
     public void GoToMainMenu(int sceneID) {
         SceneManager.LoadScene(sceneID);
     }
+
+    public void GoToCredits(int sceneID) {
+        SceneManager.LoadScene(sceneID);
+    }
 }

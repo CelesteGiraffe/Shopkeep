@@ -609,6 +609,7 @@ MonoBehaviour:
   CharacterName1: Iris
   CharacterName2: Axle
   SceneID: 2
+  MenuSceneID: 0
 --- !u!1 &589143936
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,8 +883,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
+      - m_Target: {fileID: 508364662}
+        m_TargetAssemblyTypeName: CharacterSelect, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 3
         m_Arguments:
