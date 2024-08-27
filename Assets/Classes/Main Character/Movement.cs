@@ -40,12 +40,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (moveInput != Vector2.zero)
             {
-                // Update facing direction immediately
                 animator.SetFloat("IdleX", moveInput.x);
                 animator.SetFloat("IdleY", moveInput.y);
                 lastMoveDirection = moveInput;
 
-                // Check if the input is held long enough to move
                 if (Input.GetButton("Horizontal") || Input.GetButton("Vertical"))
                 {
                     StartCoroutine(InitiateMovementAfterDelay());
@@ -53,7 +51,6 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                // Set idle animation based on last move direction
                 animator.SetFloat("IdleX", lastMoveDirection.x);
                 animator.SetFloat("IdleY", lastMoveDirection.y);
             }
@@ -72,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator InitiateMovementAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f); // Adjust the delay as needed
+        yield return new WaitForSeconds(0.1f);
 
         if (moveInput != Vector2.zero && !isMoving && !isCooldown)
         {
