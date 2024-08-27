@@ -601,11 +601,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 508364657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 190df38758e55f248830e6cc941c6907, type: 3}
+  m_Script: {fileID: 11500000, guid: 38a8a5f3b936145439a1164057995ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterSelectBtn1: {fileID: 1290980569}
   CharacterSelectBtn2: {fileID: 1707251159}
+  CharacterName1: Iris
+  CharacterName2: Axle
+  SceneID: 2
 --- !u!1 &589143936
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,7 +882,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 508364662}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuScript, Assembly-CSharp
         m_MethodName: GoToMainMenu
         m_Mode: 3
