@@ -131,4 +131,4 @@ public class PlayerMovement : MonoBehaviour
         Vector2 positionInFront = rb.position + lastMoveDirection * gridSize;
         return positionInFront;
     }
-}
+}   
