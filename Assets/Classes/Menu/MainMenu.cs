@@ -32,4 +32,7 @@ public class MenuScript : MonoBehaviour {
         Debug.Log(SceneID + " " + characterName);
         SceneManager.LoadScene(SceneID);
     }
+    public void GoToMainMenu(int sceneID) {
+        SceneManager.LoadScene(sceneID);
+    }
 }
