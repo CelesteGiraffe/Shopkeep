@@ -7,7 +7,7 @@ public class CharacterSelect : MonoBehaviour {
     [SerializeField]
     private string CharacterName1, CharacterName2;
     [SerializeField]
-    private int SceneID;
+    private int SceneID, MenuSceneID;
 
     private void Start() {
         CharacterSelectBtn1.onClick.AddListener(() => SelectCharacter(CharacterName1, SceneID));
@@ -17,6 +17,10 @@ public class CharacterSelect : MonoBehaviour {
     public void SelectCharacter(string characterName, int SceneID) {
         Debug.Log(SceneID + " " + characterName);
         UnityEngine.SceneManagement.SceneManager.LoadScene(SceneID);
+    }
+
+    public void GoToMainMenu(int MenuSceneID) {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(MenuSceneID);
     }
 
 }
