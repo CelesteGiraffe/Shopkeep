@@ -1,0 +1,11 @@
+Pokemon is a 45 degree top down game
+16x16 
+
+Sources
+Art by Stephen Challener (Redshrike). Commissioned by OpenGameArt.org (http://opengameart.org)
+
+https://opengameart.org/content/tiny-16-basic - Lanea Zimmerman
+
+https://opengameart.org/content/simple-character-base-16x16 - Base Character sprite
+
+
