@@ -22,8 +22,8 @@ public class Interact : MonoBehaviour
     private void InteractWithCustomer()
     {
         Vector2 positionInFront = playerMovement.GetPositionInFront();
-        Collider2D hit = Physics2D.OverlapCircle(positionInFront, 0.1f);
-
+        Collider2D hit = Physics2D.OverlapCircle(positionInFront, 0.5f);
+        Debug.Log(hit);
         if (hit != null)
         {
             Customer customer = hit.GetComponent<Customer>();

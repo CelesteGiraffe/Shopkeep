@@ -18,6 +18,7 @@ public class Gossiper : Customer
     public override void Interact()
     {
         base.Interact();
+        Debug.Log("Gossiper: I have some information for you.");
         // Add logic to provide information about monsters
     }
 }
