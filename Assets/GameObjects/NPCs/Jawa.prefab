@@ -191,3 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: {fileID: 0}
+  hasChosenDialogue: 0
+  hasRequestFullfilled: 0
+  dialogueIndex: 0
+  isInteracting: 0
