@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 575129991290847534}
   - component: {fileID: 6468220363115519239}
   - component: {fileID: 2523233656839417587}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShopKeeper
   m_TagString: GoodBoy
   m_Icon: {fileID: 0}

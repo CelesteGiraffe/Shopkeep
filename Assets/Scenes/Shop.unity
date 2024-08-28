@@ -5999,6 +5999,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopKeeper
       objectReference: {fileID: 0}
+    - target: {fileID: 849216433905957744, guid: 2e1f2c6d1b19eb9429262992c7cf1ce2, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5275376140823565945, guid: 2e1f2c6d1b19eb9429262992c7cf1ce2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5313485
