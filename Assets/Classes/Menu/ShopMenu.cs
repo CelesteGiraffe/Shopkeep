@@ -7,8 +7,8 @@ using TMPro;
 
 public class ShopMenu : MonoBehaviour
 {
-    [SerializeField]
-    public GameObject ShopMenuUI;
+    
+    private GameObject ShopMenuUI;
 
     [SerializeField]
     public GameObject ItemButtonPrefab;
@@ -18,45 +18,42 @@ public class ShopMenu : MonoBehaviour
 
     public static bool isOpen { get; private set; }
 
-    private void Awake()
+    private void Start()
     {
         isOpen = false;
         // find by tag
         ShopMenuUI = GameObject.FindGameObjectWithTag("ShopKeeperMenu");
+        ShopMenuUI.SetActive(false);
     }
 
     public void OpenShopMenu(List<ItemData> items)
     {
         isOpen = true;
-        ShowShopMenu();
+        Debug.Log(ShopMenuUI);
+        ShopMenuUI.SetActive(true);
         PopulateShopMenu(items);
     }
 
     public void CloseShopMenu()
     {
         isOpen = false;
-        HideShopMenu();
+        ShopMenuUI.SetActive(false);
         ClearShopMenu();
     }
 
-    public void ShowShopMenu()
-    {
-        ShopMenuUI.SetActive(true);
-    }
-
-    public void HideShopMenu()
-    {
-        ShopMenuUI.SetActive(false);
-    }
 
     private void PopulateShopMenu(List<ItemData> items)
     {
         foreach (var item in items)
         {
             GameObject button = Instantiate(ItemButtonPrefab, ItemButtonContainer);
-            button.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
+            button.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = item.name;
+            button.transform.Find("Price").GetComponent<TextMeshProUGUI>().text = item.price.ToString();
             button.GetComponent<Image>().sprite = item.itemIcon;
         }
+
+        // Ensure the layout is updated
+        LayoutRebuilder.ForceRebuildLayoutImmediate(ItemButtonContainer.GetComponent<RectTransform>());
     }
 
     private void ClearShopMenu()
@@ -65,5 +62,8 @@ public class ShopMenu : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        // Ensure the layout is updated
+        LayoutRebuilder.ForceRebuildLayoutImmediate(ItemButtonContainer.GetComponent<RectTransform>());
     }
 }

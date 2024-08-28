@@ -7,6 +7,7 @@ using UnityEditor;
 public class ItemData : ScriptableObject
 {
     public int ID;
+    public int price;
     public string itemName;
     public Sprite itemIcon;
     public GameObject itemPrefab;
