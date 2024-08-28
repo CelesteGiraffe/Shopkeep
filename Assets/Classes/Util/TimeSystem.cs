@@ -1,8 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEditor.Progress;
-using UnityEngine.UIElements;
 
 public class TimeSystem : MonoBehaviour {
 
@@ -21,11 +18,11 @@ public class TimeSystem : MonoBehaviour {
     private int[] currentTime = new int[] { 0, 0, 0, 0, 0, 0 };
 
     [SerializeField]
-    private int L_TimeScale = 1;
+    private int L_TimeScale = 30;
 
     private float SecondCount = 1f;
 
-    public void Start() {   
+    public void Start() {  
         SetTime(currentTime);
         UpdateUI();
     }
@@ -82,6 +79,7 @@ public class TimeSystem : MonoBehaviour {
     }
 
     private void UpdateUI() {
+        Debug.Log("Updating UI");
         dayText = "Day: " + day.ToString();
         if (minute < 10) {
             clockText = "Time: \n" + hour.ToString() + ":0" + minute.ToString();
@@ -94,6 +92,4 @@ public class TimeSystem : MonoBehaviour {
         clockUIDay.GetComponent<TextMeshProUGUI>().text = dayText;
         clockUIClock.GetComponent<TextMeshProUGUI>().text = clockText;
     }
-
-
 }
