@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
+[CreateAssetMenu(fileName = "NewNPC", menuName = "NPCManager/NPC")]
+
 public class NPCData {
     public int ID;
     public GameObject npcPrefab;
