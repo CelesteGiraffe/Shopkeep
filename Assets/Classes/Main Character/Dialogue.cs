@@ -9,7 +9,7 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     private Queue<string> sentences;
     private bool isDialogueOpen = false;
-    private System.Action onDialogueEnd; 
+    private System.Action onDialogueEnd;
 
     void Start()
     {
@@ -19,9 +19,16 @@ public class Dialogue : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueOpen && Input.GetKeyDown(KeyCode.Space))
+        if (isDialogueOpen)
         {
-            DisplayNextSentence();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                DisplayNextSentence();
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                CloseDialogue();
+            }
         }
     }
 
@@ -35,7 +42,7 @@ public class Dialogue : MonoBehaviour
     {
         dialogue.SetActive(false);
         isDialogueOpen = false;
-        onDialogueEnd?.Invoke(); 
+        onDialogueEnd?.Invoke();
     }
 
     public void StartDialogue(string[] dialogueSentences)
@@ -53,8 +60,8 @@ public class Dialogue : MonoBehaviour
 
     public void StartDialogue(string[] dialogueSentences, System.Action onEnd)
     {
-        onDialogueEnd = onEnd; 
-        StartDialogue(dialogueSentences); 
+        onDialogueEnd = onEnd;
+        StartDialogue(dialogueSentences);
     }
 
     public void DisplayNextSentence()

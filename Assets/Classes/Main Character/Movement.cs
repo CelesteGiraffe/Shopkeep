@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Todo: There is a bug where you can be knocked off the grid by and obs and geting back on is difficult.
+
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
     private Vector2 moveInput;

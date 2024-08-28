@@ -29,7 +29,6 @@ public class OpenInv : MonoBehaviour
 
         shopMenu = FindObjectOfType<ShopMenu>();
 
-        
         showingFurniture = false;
     }
 
@@ -50,6 +49,11 @@ public class OpenInv : MonoBehaviour
                     DisplayInventory();
                 }
             }
+        }
+
+        if (inventoryMenu != null && inventoryMenu.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseInventory();
         }
     }
 
