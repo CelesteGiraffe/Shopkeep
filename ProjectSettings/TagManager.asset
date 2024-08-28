@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ShopKeeperMenu
+  - GoodBoy
   layers:
   - Default
   - TransparentFX
