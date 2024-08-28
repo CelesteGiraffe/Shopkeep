@@ -6,7 +6,7 @@ public class ItemDatabase : MonoBehaviour
 {
     public static ItemDatabase instance;
 
-    public int GetItem(int id) {
-        return 0;
+    public static ItemData GetItem(int id) {
+        return null;
     }
 }

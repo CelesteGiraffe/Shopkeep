@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class ItemSlot : ISerializationCallbackReceiver
 {
-    [NonSerialized] 
+    [NonSerialized]
     protected ItemData itemData;
     [SerializeField] 
     protected int L_itemID;
@@ -16,6 +16,12 @@ public abstract class ItemSlot : ISerializationCallbackReceiver
         itemData = null;
         L_itemID = -1;
         L_quantity = 0;
+    }
+
+    public void AssignItem(ItemData itemData, int quantity) {
+        this.itemData = itemData;
+        L_itemID = itemData.ID;
+        L_quantity = quantity;
     }
 
     public void AddToStack(int amount) {

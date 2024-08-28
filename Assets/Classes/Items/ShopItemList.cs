@@ -9,6 +9,18 @@ public class ShopItemList : ScriptableObject
     private List<ShopItem> L_shopItems;
     [SerializeField]
     private float _buyMarkUp;
+
+    public List<ShopItem> Items {
+        get {
+            return L_shopItems;
+        }
+    }
+
+    public float BuyMarkUp {
+        get {
+            return _buyMarkUp;
+        }
+    }
 }
 
 [System.Serializable]

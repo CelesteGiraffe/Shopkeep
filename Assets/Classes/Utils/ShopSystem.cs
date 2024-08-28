@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopSystem : MonoBehaviour
+public class ShopSystem
 {
-    private List<ShopSlot> _shopInventory;
+    private List<ShopSlot> L_shopInventory;
     private int L_size;
     private float L_buyMarkUp;
 
@@ -16,6 +16,32 @@ public class ShopSystem : MonoBehaviour
     }
 
     private void SetShopSize(int size) {
+        L_shopInventory = new List<ShopSlot>(size);
 
-    }   
+        for (int i = 0; i < size; i++) {
+            L_shopInventory.Add(new ShopSlot());
+        }
+    }
+
+    public void AddToShop(ItemData itemData, int quantity) {
+        if (ContainsItem(itemData, out ShopSlot shopSlot)) {
+            shopSlot.AddToStack(quantity);
+        }
+        
+        var freeSlot = GetFreeSlot();
+    }
+    private ShopSlot GetFreeSlot() {
+        var freeSlot = L_shopInventory.Find(slot => slot.GetItemData() == null);
+
+        if (freeSlot == null) {
+            Debug.LogWarning("No free slots in shop inventory");
+            return null;
+        }
+
+        return freeSlot;
+    }
+    public bool ContainsItem(ItemData itemToAdd, out ShopSlot shopSlot) {
+        shopSlot = L_shopInventory.Find(slot => slot.GetItemData() == itemToAdd);
+        return shopSlot != null;
+    }
 }

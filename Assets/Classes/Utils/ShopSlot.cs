@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopSlot : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class ShopSlot : ItemSlot {
+    public ShopSlot() {
+        ClearSlot();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public ItemData GetItemData() {
+        return itemData;
     }
 }

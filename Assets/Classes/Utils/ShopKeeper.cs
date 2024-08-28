@@ -5,18 +5,40 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(UniqueId))]
+[RequireComponent(typeof(ShopMenu))]
 
-public class ShopKeeper : MonoBehaviour {
+public class ShopKeeper : MonoBehaviour, IInteractable {
     [SerializeField] private ShopItemList L_shopItemsHeld;
-    private ShopSystem shopSystem;
+    private ShopSystem L_shopSystem;
+    private ShopMenu L_shopMenu;
 
-    public UnityAction<IInteractable> OnInteractionComplete { get; set; }
+    private void Awake() {
+        L_shopSystem = new ShopSystem(L_shopItemsHeld.Items.Count, L_shopItemsHeld.BuyMarkUp);
+        L_shopMenu = GetComponent<ShopMenu>();
 
-    public bool Interact(Interactor interactor, out bool interactSuccessful) {
-        throw new System.NotImplementedException();
+        foreach (ShopItem item in L_shopItemsHeld.Items) {
+            L_shopSystem.AddToShop(item.itemData, item.quantity);
+        }
+    }
+
+    public void Interact() {
+        if (L_shopMenu == null) {
+            Debug.LogWarning("ShopMenu not found on ShopKeeper");
+            return;
+        }
+
+        if (ShopMenu.isOpen == true) {
+            L_shopMenu.CloseShopMenu();
+            return;
+        }
+
+        else {
+            L_shopMenu.OpenShopMenu();
+        }
     }
 
     public void EndInteraction() {
         throw new System.NotImplementedException();
     }
+
 }
