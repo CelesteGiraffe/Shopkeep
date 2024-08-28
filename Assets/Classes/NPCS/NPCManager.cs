@@ -9,19 +9,20 @@ public class NPCManager : MonoBehaviour
     public SpawnDatabase spawnDatabase;
     private TimeSystem timeSystem;
     private Dictionary<int, NPCData> npcDictionary;
-    private float checkCooldown = 10f;
-    // Start is called before the first frame update
+    private float checkCooldown = 1f;
+    private List<NPCData> spawnedNPCList;
+
     void Start() {
         timeSystem = GetComponent<TimeSystem>();
         spawnDatabase = GetComponent<SpawnDatabase>();
         npcDictionary = spawnDatabase.GetNPCdict();
+        spawnedNPCList = new List<NPCData>();
     }
 
-    // Update is called once per frame
     void Update() {
         checkCooldown -= Time.deltaTime;
         if (checkCooldown <= 0) {
-            checkCooldown = 10f;
+            checkCooldown = 1f;
             CheckForNPCSpawn();
         }
 
@@ -38,11 +39,17 @@ public class NPCManager : MonoBehaviour
     }
 
     bool ShouldSpawnNPC(NPCData npcData) {
-        if (npcData.spawnEveryDay) {
-            return true;
+        if (npcData == null) {
+            return false;
+        }
+        else if (spawnedNPCList.Any(npc => npc.ID == npcData.ID)) {
+            return false;
         }
         int[] currentTime = timeSystem.GetTime();
-        if (npcData.spawnDay == currentTime[3] && npcData.spawnHour == currentTime[2] && npcData.spawnMinute == currentTime[1]) {
+        if (npcData.spawnEveryDay && npcData.spawnHour == currentTime[2] ) {
+            return true;
+        }
+        else if (npcData.spawnDay == currentTime[3] && npcData.spawnHour == currentTime[2]) {
             return true;
         }
         return false;
@@ -51,6 +58,14 @@ public class NPCManager : MonoBehaviour
     void SpawnNPC(NPCData npcData) {
         int[] currentTime = timeSystem.GetTime();
         Instantiate(npcData.npcPrefab, npcData.spawnPosition, Quaternion.identity);
+        spawnedNPCList.Add(npcData);
         Debug.Log($"Current Time: {currentTime[2]}:{currentTime[1]}:{currentTime[0]} {currentTime[3]}/{currentTime[4]}/{currentTime[5]}");
+    }
+
+    public void DespawnNPC(NPCData npcData) {
+        if (spawnedNPCList.Contains(npcData)) {
+            spawnedNPCList.Remove(npcData);
+            Destroy(npcData.npcPrefab);
+        }
     }
 }

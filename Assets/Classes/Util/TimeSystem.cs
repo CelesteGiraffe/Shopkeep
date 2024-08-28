@@ -1,14 +1,18 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
+using UnityEngine.UIElements;
 
 public class TimeSystem : MonoBehaviour {
 
-    public Text clockText;
-    public Text dayText;
-    public Text monthText;
-    public Text yearText;
+    public GameObject clockUIDay;
+    public GameObject clockUIClock;
 
     public static int second, minute, hour, day, month, year;
+
+    private string clockText;
+    private string dayText;
 
     [SerializeField]
     private int MaxSeconds, MaxMinutes, MaxHours, MaxDays, MaxMonths;
@@ -17,13 +21,17 @@ public class TimeSystem : MonoBehaviour {
     private int[] currentTime = new int[] { 0, 0, 0, 0, 0, 0 };
 
     [SerializeField]
-    private const int l_TimeScale = 60;
+    private int L_TimeScale = 1;
 
-    public void Start() {
+    private float SecondCount = 1f;
+
+    public void Start() {   
         SetTime(currentTime);
+        UpdateUI();
     }
 
     public void Update() {
+        SecondCount -= Time.deltaTime;
         CalculateTime();
     }
 
@@ -41,51 +49,51 @@ public class TimeSystem : MonoBehaviour {
     }
 
     private void CalculateTime() {
-        second += (int)(Time.deltaTime * l_TimeScale);
+        if (SecondCount <= 0) {
+            second += L_TimeScale;
 
-        if (second >= MaxSeconds) {
-            minute++;
-            second = 0;
-            //UpdateUI();
-        }
-        else if (minute >= MaxMinutes) {
-            hour++;
-            minute = 0;
-            //UpdateUI();
-        }
-        else if (hour >= MaxHours) { 
-            day++;
-            hour = 0;
-            //UpdateUI();
-        }
-        else if (day >= MaxDays) {
-            CalculateMonth();
-        }
-        else if (month >= MaxMonths) {
-            month = 0;
-            year++;
-            //UpdateUI();
+            if (second >= MaxSeconds) {
+                minute++;
+                second = 0;
+                UpdateUI();
+            }
+            if (minute >= MaxMinutes) {
+                hour++;
+                minute = 0;
+                Debug.Log($"{currentTime[2]} : {currentTime[1]} : {currentTime[0]}");
+                UpdateUI();
+            }
+            if (hour >= MaxHours) {
+                day++;
+                hour = 0;
+                UpdateUI();
+            }
+            if (day > MaxDays) {
+                month++;
+                day = 1;
+                UpdateUI();
+            }
+            if (month > MaxMonths) {
+                month = 1;
+                year++;
+            }
+            SecondCount = 1f;
         }
     }
 
-    /* private void UpdateUI() {
-        dayText.text = "Day: " + day.ToString();
-        clockText.text = "Time: " + hour.ToString() + ":" + minute.ToString();
-        monthText.text = "Month: " + month.ToString();
-        yearText.text = "Year: " + year.ToString();
+    private void UpdateUI() {
+        dayText = "Day: " + day.ToString();
+        if (minute < 10) {
+            clockText = "Time: \n" + hour.ToString() + ":0" + minute.ToString();
+        }
+        else {
+            clockText = "Time: \n" + hour.ToString() + ":" + minute.ToString();
+        }
+        
+        // find the respective textmeshpro component of the clockUI object and set the text to dayText
+        clockUIDay.GetComponent<TextMeshProUGUI>().text = dayText;
+        clockUIClock.GetComponent<TextMeshProUGUI>().text = clockText;
     }
-    */
 
-    private void CalculateMonth() {
-        if (day >= 14) {
-            month++;
-            day = 0;
-            // UpdateUI();
-        }
-        if (month >= 4) {
-            month = 0;
-            year++;
-            // UpdateUI();
-        }
-    }
+
 }
