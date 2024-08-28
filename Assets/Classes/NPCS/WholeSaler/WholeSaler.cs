@@ -69,7 +69,7 @@ public class WholeSaler : MonoBehaviour, IInteractable
     }
 
     // Method to handle item purchase
-    public void PurchaseItem(ItemData item, int price)
+    public bool PurchaseItem(ItemData item, int price)
     {
         if (playerManager.SubtractMoney(price))
         {
@@ -78,12 +78,15 @@ public class WholeSaler : MonoBehaviour, IInteractable
             {
                 openInv.AddItem(item);
                 Debug.Log("Item purchased and added to inventory.");
+                return true;
             }
         }
         else
         {
             Debug.Log("Not enough money to purchase the item.");
+            return false;
         }
+        return false;
     }
 
     private void Update()

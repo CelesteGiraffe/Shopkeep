@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Diamond
   m_EditorClassIdentifier: 
   ID: 1
+  price: 500
   itemName: Diamond
   itemIcon: {fileID: 23733847, guid: 484f150ac31b70a4ba9436c3462d2169, type: 3}
   itemPrefab: {fileID: 0}

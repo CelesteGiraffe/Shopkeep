@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wine
   m_EditorClassIdentifier: 
   ID: 7
+  price: 5
   itemName: Wine
   itemIcon: {fileID: 1521587830, guid: 484f150ac31b70a4ba9436c3462d2169, type: 3}
   itemPrefab: {fileID: 0}
