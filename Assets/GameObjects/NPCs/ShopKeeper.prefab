@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 575129991290847534}
   - component: {fileID: 6468220363115519239}
   - component: {fileID: 2523233656839417587}
+  - component: {fileID: 6221271699475065193}
+  - component: {fileID: 3999794282922896984}
   m_Layer: 10
   m_Name: ShopKeeper
   m_TagString: GoodBoy
@@ -159,3 +161,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NumOfSlots: 10
+--- !u!114 &6221271699475065193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849216433905957744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a01195ff116b1469f0a318dad41b9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints:
+  - {x: 4.5, y: 0}
+  - {x: 4.5, y: 6.4}
+  - {x: 5.5, y: 5.4}
+  - {x: 6.5, y: 5.4}
+  moveSpeed: 2
+--- !u!50 &3999794282922896984
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849216433905957744}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
