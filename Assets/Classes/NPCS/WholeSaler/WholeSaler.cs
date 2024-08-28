@@ -72,6 +72,18 @@ public class WholeSaler : MonoBehaviour, IInteractable
         }
     }
 
+    //If Esc is pressed, close the shop menu if it's open
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (ShopMenu.isOpen == true)
+            {
+                L_shopMenu.CloseShopMenu();
+            }
+        }
+    }
+
     public void EndInteraction()
     {
         throw new System.NotImplementedException();

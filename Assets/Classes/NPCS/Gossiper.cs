@@ -9,6 +9,5 @@ public class Gossiper : Customer
     {
         base.Interact();
         dialogue.StartDialogue(new string[] { "I heard that there is a big ghost being all ghosty and stuff at the edge of town!" });
-        
     }
 }
