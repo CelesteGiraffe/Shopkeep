@@ -15,9 +15,9 @@ MonoBehaviour:
   ID: 0
   npcPrefab: {fileID: 1524651766292227055, guid: 86f5b3990ff0c634aaa6470d446214fb, type: 3}
   npcName: Jawa
-  spawnMinute: 5
+  spawnMinute: 0
   spawnHour: 0
   spawnDay: 1
   spawnEveryDay: 1
   spawnChance: 1
-  spawnPosition: {x: 0.5, y: 0.5, z: 0.5}
+  spawnPosition: {x: 4.5, y: -4.5, z: 0}
