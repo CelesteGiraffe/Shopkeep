@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 508f92776c6b5614da45488a0ca00d31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemButtonPrefab: {fileID: 0}
+  ItemButtonPrefab: {fileID: 306127588763172455, guid: a754c7cda7b7d1e4196960a0904ec4bf, type: 3}
   ItemButtonContainer: {fileID: 0}
 --- !u!61 &6468220363115519239
 BoxCollider2D:
@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9780781134bab46bd3e742c9f4802e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumOfSlots: 10
+  NumOfSlots: 6
 --- !u!114 &6221271699475065193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,10 +174,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints:
-  - {x: 4.5, y: 0}
-  - {x: 4.5, y: 6.4}
-  - {x: 5.5, y: 5.4}
-  - {x: 6.5, y: 5.4}
+  - {x: 4.44, y: -4.3}
+  - {x: -4.08, y: -2.92}
+  - {x: -3.25, y: -1.01}
+  - {x: -4.68, y: 3.4}
   moveSpeed: 2
 --- !u!50 &3999794282922896984
 Rigidbody2D:

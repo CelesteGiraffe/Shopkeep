@@ -17,6 +17,8 @@ public class OpenInv : MonoBehaviour
     private bool showingFurniture = true;
     private float checkRadius = .5f;
 
+    private ShopMenu shopMenu;
+
     void Start()
     {
         if (inventoryMenu != null)
@@ -24,10 +26,17 @@ public class OpenInv : MonoBehaviour
             inventoryMenu.SetActive(false);
         }
         pm = player.GetComponent<PlayerMovement>();
+
+        shopMenu = FindObjectOfType<ShopMenu>();
     }
 
     void Update()
     {
+        if (shopMenu != null && ShopMenu.isOpen)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (inventoryMenu != null)
@@ -191,5 +200,13 @@ public class OpenInv : MonoBehaviour
         showingFurniture = false;
         currentPage = 0;
         DisplayInventory();
+    }
+
+    public void CloseInventory()
+    {
+        if (inventoryMenu != null && inventoryMenu.activeSelf)
+        {
+            inventoryMenu.SetActive(false);
+        }
     }
 }

@@ -39,6 +39,11 @@ public class ShopMenu : MonoBehaviour
         Debug.Log(ShopMenuUI);
         ShopMenuUI.SetActive(true);
         PopulateShopMenu(items);
+
+        if (openInv != null)
+        {
+            openInv.CloseInventory();
+        }
     }
 
     public void CloseShopMenu()
@@ -58,7 +63,7 @@ public class ShopMenu : MonoBehaviour
             button.GetComponent<Button>().onClick.AddListener(() => BuyItem(item));
             button.transform.Find("Title").GetComponent<TextMeshProUGUI>().text = item.name;
             button.transform.Find("Price").GetComponent<TextMeshProUGUI>().text = item.price.ToString();
-            button.GetComponent<Image>().sprite = item.itemIcon;
+            button.transform.Find("Sprite").GetComponent<Image>().sprite = item.itemIcon;
         }
 
         // Ensure the layout is updated
