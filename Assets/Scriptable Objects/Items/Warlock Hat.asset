@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b8e022efcec52c4094c33df4d91b4d5, type: 3}
   m_Name: Warlock Hat
   m_EditorClassIdentifier: 
+  ID: 6
   itemName: Warlock Hat
   itemIcon: {fileID: 1774690609, guid: 484f150ac31b70a4ba9436c3462d2169, type: 3}
+  itemPrefab: {fileID: 0}
