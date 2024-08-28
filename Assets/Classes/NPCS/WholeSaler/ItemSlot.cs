@@ -12,6 +12,8 @@ public abstract class ItemSlot : ISerializationCallbackReceiver
     [SerializeField]
     protected int L_quantity;
 
+    private ItemDatabase itemDatabase;
+
     public void ClearSlot() {
         itemData = null;
         L_itemID = -1;
@@ -39,7 +41,7 @@ public abstract class ItemSlot : ISerializationCallbackReceiver
     public void OnAfterDeserialize() {
         if (L_itemID != -1) {
             var db = Resources.Load<ItemDatabase>("ItemDatabase");
-            itemData = ItemDatabase.GetItem(L_itemID);
+            itemData = itemDatabase.GetItem(L_itemID);
         }
         else return;
     }

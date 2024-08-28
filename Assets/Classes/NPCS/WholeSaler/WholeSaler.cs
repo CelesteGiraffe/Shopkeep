@@ -10,12 +10,16 @@ public class WholeSaler : MonoBehaviour, IInteractable
     private ShopSystem L_shopSystem;
     private ShopMenu L_shopMenu;
 
+    private ItemDatabase itemDatabase;
+
     public int NumOfSlots = 10;
 
     private void Awake()
     {
         L_shopSystem = new ShopSystem(NumOfSlots, 0);
         L_shopMenu = GetComponent<ShopMenu>();
+
+        itemDatabase = FindObjectOfType<ItemDatabase>();
 
         PopulateShopItems();
     }
@@ -29,15 +33,15 @@ public class WholeSaler : MonoBehaviour, IInteractable
 
             if (roll < 10) //10%
             {
-                itemData = ItemDatabase.GetRandomEpicItem();
+                itemData = itemDatabase.GetRandomEpicItem();
             }
             else if (roll < 30) //20%
             {
-                itemData = ItemDatabase.GetRandomRareItem();
+                itemData = itemDatabase.GetRandomRareItem();
             }
             else //70%
             {
-                itemData = ItemDatabase.GetRandomCommonItem();
+                itemData = itemDatabase.GetRandomCommonItem();
             }
 
             if (itemData != null)
@@ -49,6 +53,7 @@ public class WholeSaler : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        Debug.Log("Interacting with WholeSaler");
         if (L_shopMenu == null)
         {
             Debug.LogWarning("ShopMenu not found on ShopKeeper");

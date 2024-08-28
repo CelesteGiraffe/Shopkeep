@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class ItemDatabase : MonoBehaviour
 {
-    public static ItemDatabase instance;
-
     [SerializeField]
     private List<ItemData> items;
-    
+
     [SerializeField]
     private List<ItemData> epicItems;
     [SerializeField]
@@ -19,16 +17,7 @@ public class ItemDatabase : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            InitializeDatabase();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        InitializeDatabase();
     }
 
     private void InitializeDatabase()
@@ -47,9 +36,9 @@ public class ItemDatabase : MonoBehaviour
         }
     }
 
-    public static ItemData GetItem(int id)
+    public ItemData GetItem(int id)
     {
-        if (instance.itemDictionary.TryGetValue(id, out var item))
+        if (itemDictionary.TryGetValue(id, out var item))
         {
             return item;
         }
@@ -57,25 +46,31 @@ public class ItemDatabase : MonoBehaviour
         return null;
     }
 
-    public static ItemData GetRandomItem(List<ItemData> itemList)
+    public ItemData GetRandomItem(List<ItemData> itemList)
     {
         if (itemList.Count == 0) return null;
         int index = Random.Range(0, itemList.Count);
         return itemList[index];
     }
 
-    public static ItemData GetRandomEpicItem()
+    public ItemData GetRandomEpicItem()
     {
-        return GetRandomItem(instance.epicItems);
+        if (epicItems == null)
+        {
+            Debug.LogError("epicItems list is null.");
+            return null;
+        }
+
+        return GetRandomItem(epicItems);
     }
 
-    public static ItemData GetRandomRareItem()
+    public ItemData GetRandomRareItem()
     {
-        return GetRandomItem(instance.rareItems);
+        return GetRandomItem(rareItems);
     }
 
-    public static ItemData GetRandomCommonItem()
+    public ItemData GetRandomCommonItem()
     {
-        return GetRandomItem(instance.items);
+        return GetRandomItem(items);
     }
 }

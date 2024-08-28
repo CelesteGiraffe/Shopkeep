@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShopMenu : MonoBehaviour
 {
-
     [SerializeField]
     public GameObject ShopMenuUI;
 
     [SerializeField]
-    public GameObject ItemButtonPrefab; 
+    public GameObject ItemButtonPrefab;
 
     [SerializeField]
-    public Transform ItemButtonContainer; 
+    public Transform ItemButtonContainer;
 
     public static bool isOpen { get; private set; }
 
@@ -54,7 +54,7 @@ public class ShopMenu : MonoBehaviour
         foreach (var item in items)
         {
             GameObject button = Instantiate(ItemButtonPrefab, ItemButtonContainer);
-            button.GetComponentInChildren<Text>().text = item.name;
+            button.GetComponentInChildren<TextMeshProUGUI>().text = item.name;
             button.GetComponent<Image>().sprite = item.itemIcon;
         }
     }
@@ -67,4 +67,3 @@ public class ShopMenu : MonoBehaviour
         }
     }
 }
-
