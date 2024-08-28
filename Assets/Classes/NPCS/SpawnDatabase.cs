@@ -47,4 +47,8 @@ public class SpawnDatabase : MonoBehaviour
     public static NPCData GetRandomNPC(List<NPCData> npcList) {
         return npcList[Random.Range(0, npcList.Count)];
     }
+
+    public Dictionary<int, NPCData> GetNPCdict() {
+        return npcDictionary;
+    }
 }

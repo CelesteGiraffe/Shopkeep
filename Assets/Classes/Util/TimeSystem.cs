@@ -46,17 +46,17 @@ public class TimeSystem : MonoBehaviour {
         if (second >= MaxSeconds) {
             minute++;
             second = 0;
-            UpdateUI();
+            //UpdateUI();
         }
         else if (minute >= MaxMinutes) {
             hour++;
             minute = 0;
-            UpdateUI();
+            //UpdateUI();
         }
         else if (hour >= MaxHours) { 
             day++;
             hour = 0;
-            UpdateUI();
+            //UpdateUI();
         }
         else if (day >= MaxDays) {
             CalculateMonth();
@@ -64,27 +64,28 @@ public class TimeSystem : MonoBehaviour {
         else if (month >= MaxMonths) {
             month = 0;
             year++;
-            UpdateUI();
+            //UpdateUI();
         }
     }
 
-    private void UpdateUI() {
+    /* private void UpdateUI() {
         dayText.text = "Day: " + day.ToString();
         clockText.text = "Time: " + hour.ToString() + ":" + minute.ToString();
         monthText.text = "Month: " + month.ToString();
         yearText.text = "Year: " + year.ToString();
     }
+    */
 
     private void CalculateMonth() {
         if (day >= 14) {
             month++;
             day = 0;
-            UpdateUI();
+            // UpdateUI();
         }
         if (month >= 4) {
             month = 0;
             year++;
-            UpdateUI();
+            // UpdateUI();
         }
     }
 }

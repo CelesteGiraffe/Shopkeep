@@ -5,7 +5,7 @@ using UnityEditor;
 
 [CreateAssetMenu(fileName = "NewNPC", menuName = "NPCManager/NPC")]
 
-public class NPCData {
+public class NPCData : ScriptableObject {
     public int ID;
     public GameObject npcPrefab;
     public string npcName;
