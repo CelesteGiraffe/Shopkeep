@@ -1583,17 +1583,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryMenu: {fileID: 605333458}
   player: {fileID: 639294475}
-  furnitureInventory:
-  - {fileID: 11400000, guid: d3bb4b7568a905649ba830183de16e2b, type: 2}
-  - {fileID: 11400000, guid: d3bb4b7568a905649ba830183de16e2b, type: 2}
-  itemInventory:
-  - {fileID: 11400000, guid: 2bcd817033cb8c04e953ceecbc2e4fe5, type: 2}
-  - {fileID: 11400000, guid: 7e223ecb882d3bf429eb4391bef96c95, type: 2}
-  - {fileID: 11400000, guid: cd5358396307c734f865f2e8f2b96788, type: 2}
-  - {fileID: 11400000, guid: 8f804603afc52da41bfc9e7e0eb42c93, type: 2}
-  - {fileID: 11400000, guid: 827508e922eef6248a61ef2aa185f00e, type: 2}
-  - {fileID: 11400000, guid: bf0418e972c18404b9ff6fda07663600, type: 2}
-  - {fileID: 11400000, guid: 2f6b2f3f203f14e4bb2dff422e9c5e7f, type: 2}
+  furnitureInventory: []
+  itemInventory: []
   inventoryButtons:
   - {fileID: 1369067572}
   - {fileID: 561511558}

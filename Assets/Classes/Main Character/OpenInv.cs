@@ -28,6 +28,9 @@ public class OpenInv : MonoBehaviour
         pm = player.GetComponent<PlayerMovement>();
 
         shopMenu = FindObjectOfType<ShopMenu>();
+
+        
+        showingFurniture = false;
     }
 
     void Update()
