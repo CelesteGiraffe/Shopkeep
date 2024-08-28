@@ -19,15 +19,12 @@ public class NPCManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        int[] currentTime = timeSystem.GetTime();
-        if (timeSystem != null) {
-            Debug.Log($"Current Time: {currentTime[2]}:{currentTime[1]}:{currentTime[0]} {currentTime[3]}/{currentTime[4]}/{currentTime[5]}");
-        }
         checkCooldown -= Time.deltaTime;
         if (checkCooldown <= 0) {
             checkCooldown = 10f;
             CheckForNPCSpawn();
         }
+
     }
 
     void CheckForNPCSpawn() {
@@ -52,6 +49,8 @@ public class NPCManager : MonoBehaviour
     }
 
     void SpawnNPC(NPCData npcData) {
+        int[] currentTime = timeSystem.GetTime();
         Instantiate(npcData.npcPrefab, npcData.spawnPosition, Quaternion.identity);
+        Debug.Log($"Current Time: {currentTime[2]}:{currentTime[1]}:{currentTime[0]} {currentTime[3]}/{currentTime[4]}/{currentTime[5]}");
     }
 }
