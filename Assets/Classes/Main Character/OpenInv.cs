@@ -1,13 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OpenInv : MonoBehaviour
 {
     public GameObject inventoryMenu;
-
     public GameObject player;
 
     [SerializeField] private List<FurnitureData> furnitureInventory = new List<FurnitureData>();
@@ -16,11 +13,8 @@ public class OpenInv : MonoBehaviour
     [SerializeField] private List<Button> inventoryButtons = new List<Button>();
 
     private PlayerMovement pm;
-
     private int currentPage = 0;
-
     private bool showingFurniture = true;
-
     private float checkRadius = .5f;
 
     void Start()
@@ -108,12 +102,12 @@ public class OpenInv : MonoBehaviour
     void SpawnFurniture(FurnitureData furniture)
     {
         Vector3 spawnPosition = pm.GetPositionInFront();
-        spawnPosition.z = player.transform.position.z; 
+        spawnPosition.z = player.transform.position.z;
         if (!Physics2D.OverlapCircle(spawnPosition, checkRadius))
         {
             Instantiate(furniture.furniturePrefab, spawnPosition, Quaternion.identity);
-            furnitureInventory.Remove(furniture); 
-            DisplayInventory(); 
+            furnitureInventory.Remove(furniture);
+            DisplayInventory();
         }
         else
         {

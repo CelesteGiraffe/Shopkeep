@@ -1,16 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 
-[RequireComponent(typeof(UniqueId))]
-[RequireComponent(typeof(ShopMenu))]
 public class WholeSaler : MonoBehaviour, IInteractable
 {
     private ShopSystem L_shopSystem;
     private ShopMenu L_shopMenu;
-
     private ItemDatabase itemDatabase;
+    private PlayerManager playerManager; // Reference to PlayerManager
 
     public int NumOfSlots = 10;
 
@@ -18,8 +14,8 @@ public class WholeSaler : MonoBehaviour, IInteractable
     {
         L_shopSystem = new ShopSystem(NumOfSlots, 0);
         L_shopMenu = GetComponent<ShopMenu>();
-
         itemDatabase = FindObjectOfType<ItemDatabase>();
+        playerManager = FindObjectOfType<PlayerManager>(); // Find PlayerManager in the scene
 
         PopulateShopItems();
     }
@@ -72,7 +68,24 @@ public class WholeSaler : MonoBehaviour, IInteractable
         }
     }
 
-    //If Esc is pressed, close the shop menu if it's open
+    // Method to handle item purchase
+    public void PurchaseItem(ItemData item, int price)
+    {
+        if (playerManager.SubtractMoney(price))
+        {
+            OpenInv openInv = playerManager.GetComponent<OpenInv>();
+            if (openInv != null)
+            {
+                openInv.AddItem(item);
+                Debug.Log("Item purchased and added to inventory.");
+            }
+        }
+        else
+        {
+            Debug.Log("Not enough money to purchase the item.");
+        }
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

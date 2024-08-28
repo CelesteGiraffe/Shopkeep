@@ -76,7 +76,7 @@ public class NPCManager : MonoBehaviour
         LayerMask layerMask = LayerMask.GetMask("Obstacle");
 
         bool isBlocked = Physics2D.OverlapCircle(spawnPosition, radius, layerMask);
-        Debug.Log($"Checking spawn position {spawnPosition} for obstacles. Is blocked: {isBlocked}");
+        //Debug.Log($"Checking spawn position {spawnPosition} for obstacles. Is blocked: {isBlocked}");
         return isBlocked;
     }
 
@@ -87,7 +87,7 @@ public class NPCManager : MonoBehaviour
         }
         Instantiate(npcData.npcPrefab, spawnVariance, Quaternion.identity);
         spawnedNPCList.Add(npcData);
-        Debug.Log($"Current Time: {currentTime[2]}:{currentTime[1]}:{currentTime[0]} {currentTime[3]}/{currentTime[4]}/{currentTime[5]}");
+        //Debug.Log($"Current Time: {currentTime[2]}:{currentTime[1]}:{currentTime[0]} {currentTime[3]}/{currentTime[4]}/{currentTime[5]}");
     }
 
     public void DespawnNPC(NPCData npcData) {

@@ -15,7 +15,7 @@ public class NPCPathFinder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         if (waypoints.Count > 0)
         {
-            Debug.Log("Starting to follow path.");
+            //Debug.Log("Starting to follow path.");
             StartCoroutine(FollowPath());
         }
     }

@@ -79,7 +79,6 @@ public class TimeSystem : MonoBehaviour {
     }
 
     private void UpdateUI() {
-        Debug.Log("Updating UI");
         dayText = "Day: " + day.ToString();
         if (minute < 10) {
             clockText = "Time: \n" + hour.ToString() + ":0" + minute.ToString();
