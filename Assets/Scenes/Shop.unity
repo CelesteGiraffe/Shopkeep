@@ -6085,7 +6085,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5275376140823565945, guid: 2e1f2c6d1b19eb9429262992c7cf1ce2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.1359688
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5275376140823565945, guid: 2e1f2c6d1b19eb9429262992c7cf1ce2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8064,6 +8064,7 @@ GameObject:
   - component: {fileID: 1962856871}
   - component: {fileID: 1962856870}
   - component: {fileID: 1962856869}
+  - component: {fileID: 1962856872}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -8153,6 +8154,30 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1962856872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962856867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &2018401014
 GameObject:
   m_ObjectHideFlags: 0
