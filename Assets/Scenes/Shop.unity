@@ -7955,7 +7955,7 @@ GameObject:
   - component: {fileID: 2019263939}
   m_Layer: 5
   m_Name: ShopKeeperMenu
-  m_TagString: Untagged
+  m_TagString: ShopKeeperMenu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
