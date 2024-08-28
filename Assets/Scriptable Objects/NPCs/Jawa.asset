@@ -20,4 +20,4 @@ MonoBehaviour:
   spawnDay: 1
   spawnEveryDay: 1
   spawnChance: 1
-  spawnPosition: {x: 4.5, y: -4.5, z: 0}
+  spawnPosition: {x: 4.5, y: -4.3, z: 0}
